@@ -1,0 +1,59 @@
+services:
+  frontend:
+    build: ./services/frontend
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_PRODUCT_SERVICE=http://localhost:3001
+      - REACT_APP_ORDER_SERVICE=http://localhost:3002
+      - REACT_APP_USER_SERVICE=http://localhost:3003
+      - REACT_APP_PAYMENT_SERVICE=http://localhost:3004
+    depends_on:
+      - product-service
+      - order-service
+      - user-service
+      - payment-service
+
+  product-service:
+    build: ./services/product-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - NODE_ENV=development
+
+  order-service:
+    build: ./services/order-service
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - NODE_ENV=development
+      - NOTIFICATION_SERVICE_URL=http://notification-service:3005
+    depends_on:
+      - notification-service
+
+  user-service:
+    build: ./services/user-service
+    ports:
+      - "3003:3003"
+    environment:
+      - PORT=3003
+      - NODE_ENV=development
+      - JWT_SECRET=local-dev-secret-change-in-prod
+
+  payment-service:
+    build: ./services/payment-service
+    ports:
+      - "3004:3004"
+    environment:
+      - PORT=3004
+      - NODE_ENV=development
+
+  notification-service:
+    build: ./services/notification-service
+    ports:
+      - "3005:3005"
+    environment:
+      - PORT=3005
+      - NODE_ENV=development
