@@ -1,0 +1,8 @@
+{
+  "frontend" = "882434014807.dkr.ecr.us-east-2.amazonaws.com/shopcloud/frontend"
+  "notification-service" = "882434014807.dkr.ecr.us-east-2.amazonaws.com/shopcloud/notification-service"
+  "order-service" = "882434014807.dkr.ecr.us-east-2.amazonaws.com/shopcloud/order-service"
+  "payment-service" = "882434014807.dkr.ecr.us-east-2.amazonaws.com/shopcloud/payment-service"
+  "product-service" = "882434014807.dkr.ecr.us-east-2.amazonaws.com/shopcloud/product-service"
+  "user-service" = "882434014807.dkr.ecr.us-east-2.amazonaws.com/shopcloud/user-service"
+}
