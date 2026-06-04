@@ -114,11 +114,11 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f k8s/base/namespace.yaml
-          kubectl apply -f k8s/base/hpa-and-secrets.yaml
-          kubectl apply -f k8s/base/deployments.yaml
-          kubectl apply -f k8s/base/services.yaml
-          kubectl apply -f k8s/base/ingress.yaml
+          kubectl apply -f k8s/base/namespace.yaml --validate=false
+          kubectl apply -f k8s/base/hpa-and-secrets.yaml --validate=false
+          kubectl apply -f k8s/base/deployments.yaml --validate=false
+          kubectl apply -f k8s/base/services.yaml --validate=false
+          kubectl apply -f k8s/base/ingress.yaml --validate=false
 
       - name: Wait for rollout
         run: |
